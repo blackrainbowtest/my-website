@@ -1,10 +1,9 @@
+import { Link } from "react-router-dom";
 
 const GetStarted = () => {
 
 	return (
-		<div>
-			5555
-		</div>
+		<Link to="/" className="btn btn-accent">Go to Home</Link>
 	)
 }
 

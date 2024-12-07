@@ -4,7 +4,7 @@ import { login_user } from "../logic/auth/authSignInAPI";
 import { useNavigate } from "react-router-dom";
 
 function SignIn() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,7 +18,7 @@ function SignIn() {
         localStorage.setItem("usr_state", true);
       })
       .then(() => {
-        navigate("/welcome")
+        navigate("/welcome");
       })
       .catch((err) => {
         console.log(err);
@@ -26,65 +26,73 @@ function SignIn() {
   };
 
   return (
-    <div className="h-full w-full flex justify-center items-center">
-      <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold text-center mb-4">Sign in</h2>
+    <div className="h-screen flex justify-center items-center bg-base-200">
+      <div className="card w-full max-w-md shadow-2xl bg-base-100">
+        <div className="card-body">
+          <h2 className="text-2xl font-bold text-center">Sign In</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {/* Email Field */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Invalid email format",
+                  },
+                })}
+                className={`input input-bordered ${
+                  errors.email ? "input-error" : ""
+                }`}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Email */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              type="text"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  // value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  message: "Invalid email format",
-                },
-              })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
-            )}
-          </div>
+            {/* Password Field */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                {...register("password", {
+                  required: "Password is required",
+                })}
+                className={`input input-bordered ${
+                  errors.password ? "input-error" : ""
+                }`}
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
 
-          {/* Password */}
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              {...register("password", { required: "Password is required" })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            />
-            {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password.message}</p>
-            )}
-          </div>
-
-          {/* Submit Button */}
-          <div>
-            <button
-              type="submit"
-              className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
-            >
-              Login
-            </button>
-          </div>
-        </form>
+            {/* Submit Button */}
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+            </div>
+          </form>
+          <p className="text-center text-sm mt-4">
+            Don’t have an account?{" "}
+            <a href="/signup" className="text-blue-500 hover:underline">
+              Sign Up
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

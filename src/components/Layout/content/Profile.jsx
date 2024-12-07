@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-
 import { useNavigate } from "react-router-dom";
-
+import usrimg from "../../../img/usr.svg"
 
 
 const Profile = ({setAuth}) => {
@@ -17,7 +16,7 @@ const Profile = ({setAuth}) => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+            src={usrimg}
           />
         </div>
       </div>

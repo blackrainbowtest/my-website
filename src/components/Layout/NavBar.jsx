@@ -5,6 +5,7 @@ import Auth from "./content/Autentication";
 import { Link } from "react-router-dom";
 import Profile from "./content/Profile";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuth, setAuth] = useState(false);

@@ -9,7 +9,11 @@ import Layout from "./components/Layout";
 import SignIn from "./pages/SignIn";
 import Welcome from "./pages/Welcome";
 import GetStarted from "./pages/GetStarted";
-
+import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Service from "./pages/Service";
+import Contact from "./pages/Contact";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,12 +27,17 @@ function App() {
     <div className="h-[100vh] w-[100vw] flex flex-col bg-gray-700">
       <Routes>
         <Route path="" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/Signin" element={<SignIn />} />
           <Route path="/getstarted" element={<GetStarted />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Service/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Route>
-        <Route path="/welcome" element={<Welcome/>} />
-        <Route path="*" element={<h1>page not fount</h1>} />
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
