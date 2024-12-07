@@ -11,7 +11,7 @@ function SignIn() {
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
-
+  //  FIXME: functionalyty does not work, users can sign in with not existing accounts
   const onSubmit = (data) => {
     dispatch(login_user(data))
       .then(() => {
@@ -21,11 +21,12 @@ function SignIn() {
         navigate("/welcome");
       })
       .catch((err) => {
-        console.log(err);
-      });
+        console.warn(err);
+      })
   };
 
   return (
+
     <div className="h-screen flex justify-center items-center bg-base-200">
       <div className="card w-full max-w-md shadow-2xl bg-base-100">
         <div className="card-body">
@@ -95,6 +96,7 @@ function SignIn() {
         </div>
       </div>
     </div>
+
   );
 }
 

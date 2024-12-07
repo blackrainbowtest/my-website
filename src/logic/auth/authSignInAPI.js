@@ -7,8 +7,9 @@ export const login_user = createAsyncThunk(
 		try {
 			const response = await userAPI.get(`?email=${obj.email}&password=${obj.password}`);
 			return response.data[0]
-		} catch (error) {
-			return error
+		} catch (err) {
+			return err
 		}
 	}
 )
+
