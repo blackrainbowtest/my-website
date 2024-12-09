@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import SignUp from "./pages/SignUp";
-// import { setSuccess } from "./logic/registration/RegistrationSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getUsers } from "./logic/auth/authSignUpAPI";
@@ -17,14 +17,18 @@ import Contact from "./pages/Contact";
 
 function App() {
   const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
   const { user, users, success } = useSelector((state) => state.account);
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   const userAgent = navigator.userAgent;
+  //   console.log(userAgent.split(' '));
+  // }, []);
+  
   return (
-    <div className="h-[100vh] w-[100vw] flex flex-col bg-gray-700">
+    <div className="h-[100vh] flex flex-col bg-gray-700" data-theme="dark">
       <Routes>
         <Route path="" element={<Layout />}>
           <Route path="/" element={<Home />} />

@@ -14,19 +14,23 @@ function SignIn() {
   //  FIXME: functionalyty does not work, users can sign in with not existing accounts
   const onSubmit = (data) => {
     dispatch(login_user(data))
-      .then(() => {
-        localStorage.setItem("usr_state", true);
+      .then((data) => {
+        if (data.payload) {
+          localStorage.setItem("usr_state", true);
+        }
+        return data.payload
       })
-      .then(() => {
-        navigate("/welcome");
+      .then((check_usr_state) => {
+        if(check_usr_state) {
+          navigate("/welcome");
+        }
       })
       .catch((err) => {
         console.warn(err);
-      })
+      });
   };
 
   return (
-
     <div className="h-screen flex justify-center items-center bg-base-200">
       <div className="card w-full max-w-md shadow-2xl bg-base-100">
         <div className="card-body">
@@ -96,7 +100,6 @@ function SignIn() {
         </div>
       </div>
     </div>
-
   );
 }
 

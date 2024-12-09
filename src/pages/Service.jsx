@@ -1,9 +1,10 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Service = () => {
+  console.log(document.getElementN);
+  
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="bg-base-200" data-theme="dark">
       {/* Hero Section */}
       <div className="hero bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
         <div className="hero-content text-center">

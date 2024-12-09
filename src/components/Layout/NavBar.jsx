@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Auth from "./content/Autentication";
 import { Link } from "react-router-dom";
 import Profile from "./content/Profile";
-
+import ThemeChangeComponent from "./content/ThemeChangeComponent";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,8 +20,8 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-3">
-        <div className="flex items-center justify-between">
+      <div className=" px-6 py-3 w-full">
+        <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <Link to="/" className="text-white text-2xl font-semibold">
             MyLogo
@@ -53,8 +53,11 @@ const Navbar = () => {
           {/* Nav Links */}
           {!isMenuOpen && isAuth ? (
             <>
-              <NavLinks isMenuOpen={isMenuOpen} />
-              <Profile setAuth={setAuth}/>
+              <div className="flex-grow flex justify-center">
+                <NavLinks isMenuOpen={isMenuOpen} />
+              </div>
+              <Profile setAuth={setAuth} />
+              <ThemeChangeComponent />
             </>
           ) : (
             <Auth isMenuOpen={isMenuOpen} />
